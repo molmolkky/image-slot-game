@@ -574,14 +574,9 @@
             // 結果判定
             checkResult(finalResults);
             
-            // ボタンを再有効化
-            const spinButton = document.getElementById('spinButton');
-            spinButton.disabled = false;
-            spinButton.textContent = '🎲 スピン開始！';
-            isSpinning = false;
-            
             // 全リールのstoppedクラスを削除し、ストップボタンをリセット（次回のゲームのため）
             setTimeout(() => {
+                // 全リールのstoppedクラスを削除し、ストップボタンをリセット
                 const reels = document.querySelectorAll('.reel');
                 reels.forEach(reel => reel.classList.remove('stopped'));
                 
@@ -591,7 +586,13 @@
                     stopButton.textContent = 'ストップ';
                     stopButton.classList.remove('stopped');
                 }
-            }, 2000);
+                
+                // スピンボタンを再有効化
+                const spinButton = document.getElementById('spinButton');
+                spinButton.disabled = false;
+                spinButton.textContent = '🎲 スピン開始！';
+                isSpinning = false;
+            }, 1000);
         }
 
         function checkResult(results) {
